@@ -1,14 +1,81 @@
 import pygame
 
-
 # create color constants
 WHITE = (255, 255, 255)
 RED = (87, 9, 9)
 GREEN = (12, 148, 37)
 BLUE = (2, 0, 94)
 BLACK = (0, 0, 0)
+BLOCK_GOOD = (218, 237, 9)
+BLOCK_OK = (252, 132, 3)
+BLOCK_WEAK = (252, 53, 3)
 
 # width by height
-FPS = 60
+FPS = 50
 DISPLAY_WIDTH = 700
-DISPLAY_HEIGHT = 500
+DISPLAY_HEIGHT = 800
+
+# missiles
+MISSILE_WIDTH = 4
+MISSILE_HEIGHT = 15
+MISSILE_DELAY = 500
+
+# bombs
+BOMB_WIDTH = 2
+BOMB_HEIGHT = 10
+BOMB_DELAY = 750
+
+# blocks
+BLOCK_WIDTH = 7
+BLOCK_HEIGHT = 7
+GAP = DISPLAY_WIDTH//10
+print(GAP)
+LENGTH = DISPLAY_WIDTH//10
+print(LENGTH)
+
+# ufo's
+UFO_DELAY = 5000
+
+# print((GAP + LENGTH)//5)
+
+# images
+RED_ALIEN = "assets/red.png"
+GREEN_ALIEN = "assets/green.png"
+YELLOW_ALIEN = "assets/yellow.png"
+PLAYER_IMAGE_PATH = "assets/player.png"
+UFO_IMG_PATH = "assets/ufo.png"
+
+EXPLOSION_LIST = []
+for i in range(8):
+    image_path = pygame.image.load(f"assets/explosion/sprite_{i}.png")
+    EXPLOSION_LIST.append(image_path)
+
+LAYOUT = ["000000000000000000000000000000",
+          "000000000000000000000000000000",
+          "000002020202020202020202000000",
+          "000002020202020202020202000000",
+          "000002020202020202020202000000",
+          "000002020202020202020202000000",
+          "000002020202020202020202000000",
+          "000000000000000000000000000000",
+          "000000000000000000000000000000",
+          "000000000000000000000000000000",
+          "000000000000000000000000000000",
+          "000000110000001100000011000000",
+          "000001111000011110000111100000",
+          "000001001000010010000100100000",
+          "000000000000000000000000000000",
+          "000000000000000000000000000000",]
+
+SHEILD = [
+"  xxxxxxx",
+" xxxxxxxxx",
+"xxxxxxxxxxx",
+"xxxxxxxxxxx",
+"xxx     xxx",
+"xx       xx"
+]
+
+VERT_SCALE = DISPLAY_HEIGHT // len(LAYOUT)
+HOR_SCALE = DISPLAY_WIDTH // len(LAYOUT[0])
+
