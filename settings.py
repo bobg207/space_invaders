@@ -1,4 +1,7 @@
 import pygame
+import random
+
+pygame.init()
 
 # create color constants
 WHITE = (255, 255, 255)
@@ -9,6 +12,13 @@ BLACK = (0, 0, 0)
 BLOCK_GOOD = (218, 237, 9)
 BLOCK_OK = (252, 132, 3)
 BLOCK_WEAK = (252, 53, 3)
+
+# Fonts
+SML_FONT = pygame.font.Font("assets/unifont.ttf", 32)
+MED_FONT = pygame.font.Font("assets/unifont.ttf", 38)
+LRG_FONT = pygame.font.Font("assets/unifont.ttf", 44)
+LRG_FONT_BLD = pygame.font.Font("assets/unifont.ttf", 44,
+                                bold = pygame.font.Font.bold)
 
 # width by height
 FPS = 50
@@ -28,15 +38,13 @@ BOMB_DELAY = 750
 # blocks
 BLOCK_WIDTH = 7
 BLOCK_HEIGHT = 7
-GAP = DISPLAY_WIDTH//10
+GAP = DISPLAY_WIDTH // 10
 print(GAP)
-LENGTH = DISPLAY_WIDTH//10
+LENGTH = DISPLAY_WIDTH // 10
 print(LENGTH)
 
 # ufo's
-UFO_DELAY = 5000
-
-# print((GAP + LENGTH)//5)
+UFO_BOMB_DELAY = 1500
 
 # images
 RED_ALIEN = "assets/red.png"
@@ -50,32 +58,11 @@ for i in range(8):
     image_path = pygame.image.load(f"assets/explosion/sprite_{i}.png")
     EXPLOSION_LIST.append(image_path)
 
-LAYOUT = ["000000000000000000000000000000",
-          "000000000000000000000000000000",
-          "000002020202020202020202000000",
-          "000002020202020202020202000000",
-          "000002020202020202020202000000",
-          "000002020202020202020202000000",
-          "000002020202020202020202000000",
-          "000000000000000000000000000000",
-          "000000000000000000000000000000",
-          "000000000000000000000000000000",
-          "000000000000000000000000000000",
-          "000000110000001100000011000000",
-          "000001111000011110000111100000",
-          "000001001000010010000100100000",
-          "000000000000000000000000000000",
-          "000000000000000000000000000000",]
-
 SHEILD = [
-"  xxxxxxx",
-" xxxxxxxxx",
-"xxxxxxxxxxx",
-"xxxxxxxxxxx",
-"xxx     xxx",
-"xx       xx"
+    "  xxxxxxx",
+    " xxxxxxxxx",
+    "xxxxxxxxxxx",
+    "xxxxxxxxxxx",
+    "xxx     xxx",
+    "xx       xx"
 ]
-
-VERT_SCALE = DISPLAY_HEIGHT // len(LAYOUT)
-HOR_SCALE = DISPLAY_WIDTH // len(LAYOUT[0])
-

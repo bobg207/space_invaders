@@ -6,9 +6,7 @@ from settings import *
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-
         self.image = pygame.image.load(PLAYER_IMAGE_PATH)
-        # self.image.fill(WHITE)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -72,10 +70,12 @@ class UFO(pygame.sprite.Sprite):
         self.image = pygame.image.load(UFO_IMG_PATH)
         # self.image.fill(WHITE)
         self.rect = self.image.get_rect()
-        self.rect.x = DISPLAY_WIDTH + random.choice([10, 20, 30, 40])
+        self.rect.x = 2*DISPLAY_WIDTH
         self.rect.y = 100
         self.radius = self.rect.width // 2
         self.change_x = random.randint(1, 2)  # velocity variable
+        self.last_drop = pygame.time.get_ticks()
+        self.delay = 500
 
     def update(self):
         self.rect.x -= self.change_x
@@ -119,7 +119,7 @@ class Bomb(pygame.sprite.Sprite):
     def update(self):
         self.rect.y += self.change_y
 
-        if self.rect.bottom >= DISPLAY_HEIGHT:
+        if self.rect.top >= DISPLAY_HEIGHT - 70:
             self.kill()
 
 
@@ -127,9 +127,8 @@ class Explosion(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
         self.image = EXPLOSION_LIST[0]
-        self.rect = self.image.get_rect(center=center)
-        # self.rect.center = center
-        print(self.rect.center)
+        self.rect = self.image.get_rect()
+        self.rect.center = center
         self.frame = 0
         self.previous_update = pygame.time.get_ticks()
         self.frame_rate = 50
