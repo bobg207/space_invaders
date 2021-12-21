@@ -16,14 +16,14 @@ BLOCK_WEAK = (252, 53, 3)
 # Fonts
 SML_FONT = pygame.font.Font("assets/unifont.ttf", 32)
 MED_FONT = pygame.font.Font("assets/unifont.ttf", 38)
-LRG_FONT = pygame.font.Font("assets/unifont.ttf", 44)
+LRG_FONT = pygame.font.Font("assets/unifont.ttf", 72)
 LRG_FONT_BLD = pygame.font.Font("assets/unifont.ttf", 44,
                                 bold = pygame.font.Font.bold)
 
 # width by height
 FPS = 50
-DISPLAY_WIDTH = 700
-DISPLAY_HEIGHT = 800
+DISPLAY_WIDTH = 900
+DISPLAY_HEIGHT = 1000
 
 # missiles
 MISSILE_WIDTH = 4

@@ -13,6 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.radius = self.rect.width // 2
         self.change_x = 0  # velocity variable
 
+
     def update(self):
         self.rect.x += self.change_x
 
@@ -52,12 +53,13 @@ class Block(pygame.sprite.Sprite):
 
 class Enemy(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, img):
+    def __init__(self, x, y, img, value):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(img)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.value = value
 
     def update(self, x_velo):
         self.rect.x += x_velo
@@ -76,6 +78,7 @@ class UFO(pygame.sprite.Sprite):
         self.change_x = random.randint(1, 2)  # velocity variable
         self.last_drop = pygame.time.get_ticks()
         self.delay = 500
+        self.value = random.choice([200, 400, 600])
 
     def update(self):
         self.rect.x -= self.change_x
